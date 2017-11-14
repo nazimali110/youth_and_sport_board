@@ -1,0 +1,25 @@
+D:\uni work\fall 2012\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.dll
+D:\uni work\fall 2012\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.pdb
+D:\uni work\fall 2012\youth_and_sport_board\youth_and_sport_board\obj\Debug\ResolveAssemblyReference.cache
+D:\uni work\fall 2012\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.dll
+D:\uni work\fall 2012\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.pdb
+D:\uni work\fall 2012\Nazim FYP\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.dll
+D:\uni work\fall 2012\Nazim FYP\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.pdb
+D:\uni work\fall 2012\Nazim FYP\youth_and_sport_board\youth_and_sport_board\obj\Debug\ResolveAssemblyReference.cache
+D:\uni work\fall 2012\Nazim FYP\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.dll
+D:\uni work\fall 2012\Nazim FYP\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.pdb
+C:\Users\MOmer\Downloads\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.dll
+C:\Users\MOmer\Downloads\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.pdb
+C:\Users\MOmer\Downloads\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.dll
+C:\Users\MOmer\Downloads\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.pdb
+D:\uni work\fall 2012\Nazim FYP\new bhai\Check Your Project and DB_SCRIPT\umer bhai mail\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.dll
+D:\uni work\fall 2012\Nazim FYP\new bhai\Check Your Project and DB_SCRIPT\umer bhai mail\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.pdb
+D:\uni work\fall 2012\Nazim FYP\new bhai\Check Your Project and DB_SCRIPT\umer bhai mail\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\obj\Debug\ResolveAssemblyReference.cache
+D:\uni work\fall 2012\Nazim FYP\new bhai\Check Your Project and DB_SCRIPT\umer bhai mail\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.dll
+D:\uni work\fall 2012\Nazim FYP\new bhai\Check Your Project and DB_SCRIPT\umer bhai mail\umer bhai mail\umer bhai mail\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.pdb
+D:\uni work\fall 2012\Nazim FYP\project\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.dll
+D:\uni work\fall 2012\Nazim FYP\project\youth_and_sport_board\youth_and_sport_board\bin\youth_and_sport_board.pdb
+D:\uni work\fall 2012\Nazim FYP\project\youth_and_sport_board\youth_and_sport_board\obj\Debug\ResolveAssemblyReference.cache
+D:\uni work\fall 2012\Nazim FYP\project\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.dll.licenses
+D:\uni work\fall 2012\Nazim FYP\project\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.dll
+D:\uni work\fall 2012\Nazim FYP\project\youth_and_sport_board\youth_and_sport_board\obj\Debug\youth_and_sport_board.pdb

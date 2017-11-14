@@ -1,0 +1,216 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="header_footer.master.cs" Inherits="youth_and_sport_board.header_footer" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+<%--<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/easySlider1.5.js"></script>--%>
+<%--<script type="text/javascript" charset="utf-8">
+// <![CDATA[
+    $(document).ready(function () {
+        $("#slider").easySlider({
+            controlsBefore: '<p id="controls">',
+            controlsAfter: '</p>',
+            auto: true,
+            continuous: true
+        });
+    });
+// ]]>
+</script>--%>
+<style type="text/css">
+#slider { margin:0; padding:1px; list-style:none; }
+#slider ul,
+#slider li { margin:0; padding:0; list-style:none; }
+/* 
+    define width and height of list item (slide)
+    entire slider area will adjust according to the parameters provided here
+*/
+#slider li { width:943px; height:323px; overflow:hidden; }
+p#controls { margin:0; position:relative; }
+#prevBtn,
+#nextBtn { display:block; margin:0; overflow:hidden; width:41px; height:41px; position:absolute; left: -50px; top:-178px; }
+#nextBtn { left:965px; }
+#prevBtn a { display:block; width:41px; height:41px; background:url(images/left_arrow.gif) no-repeat 0 0; }
+#nextBtn a { display:block; width:41px; height:41px; background:url(images/right_arrow.gif) no-repeat 0 0; }
+</style>
+
+   
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#form1").validate({ meta: "validate" });
+            
+        });
+    </script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" class="form-horizontal" runat="server" style="margin:0;">
+    <div>
+        <div class="main">
+         <div class="header" style="margin-top:28px;">
+    <div class="block_header">
+            <div class="logo"><p>Aga Khan Youth and Sport Board</p></div>
+     <!-- <div style="float:right;">
+        <div class="clr"></div>
+        <div class="menu">
+          <ul>
+            <li><a href="index.html" class="active"><span>Welcome</span></a></li>                                
+            <li><a href="about.html"><span>About us</span></a></li>
+            <li><a href="portfolio.html"><span>Portfolio</span></a></li>
+            <li><a href="contact.html"><span>Contact</span></a></li>
+        </ul>
+        </div>
+      </div> -->
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+     <a class="brand " href="#"><%=log_username%></a>
+  <ul class="nav">
+   <li class="divider-vertical"></li>
+   <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="viewprofile.aspx">View Profile</a></li>
+                          <li><a href="change_pass.aspx">Change Password</a></li>
+                      
+                        </ul>
+                      </li>
+                       <li class="dropdown">
+   <a href="#x" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="signup.aspx">Create User</a></li>
+                          <li><a href="signup_data.aspx">User Information</a></li>
+                          <li><a href="login_type.aspx">Login Type</a></li>
+                          <li><a href="nofimember.aspx">Notification Sms and email</a></li>
+                        
+                        </ul>
+                      </li>
+             <li class="divider"><a href="organization.aspx">Organization</a></li>
+             <li class="divider"><a href="sport_eq.aspx">Sport Equipment</a></li>
+            <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pacticipant<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="new_participant.aspx">Participant Register</a></li>
+
+                          <li><a href="participant_eud.aspx">Participant Data</a></li>
+                           
+                        </ul>
+                      </li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="event_register.aspx">Event Register</a></li>
+                          <li><a href="event_register_eud.aspx">Event Data</a></li>
+                          <li><a href="event_category.aspx">Event Category</a></li>
+                          <li><a href="participant_register.aspx">Event Participant</a></li>
+                          <li><a href="participant_register_edu.aspx">Event Participant Data</a></li>
+                          
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="accounts.aspx">Account Details</a></li>
+                          <li><a href="generaljournal.aspx">General Journal</a></li>
+                          
+                          
+                        </ul>
+                      </li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="accountingreports.aspx">Accounting Report</a></li>
+                          <li> <a href="vieweventpartregistration.aspx">Event Participant Report</a></li>
+                         <li> <a href="datarport.aspx">Event and Participant Report</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meeting Schedule<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          
+                          <li><a href="meetingschedule.aspx">Meeting Schedule</a></li>
+                          <li><a href="meetingschedule_eud.aspx">View Schedule</a></li>
+                          
+                        </ul>
+                      </li>
+                      <li class="divider-vertical"><a href="login.aspx?login=false">Log Out</a></li>
+  
+</ul>
+            
+        
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse">
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+      </div>
+ 
+    </div>
+  </div>
+</div>
+    </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div class="footer">    
+            <div class="resize">
+            <p class="footer_logo">&nbsp;</p>
+            <div>© Copyright 2012. <a href="#">Aga Khan Youth and Sport Board</a>. All Rights Reserved.Design and Developed by Nazim Ali
+           </div>
+            </div>
+            <p class="clr"></p>
+        </div>
+        </div>
+    </div>
+    </form>
+     <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="docs/assets/js/jquery.js"></script>
+    <script src="docs/assets/js/bootstrap-transition.js"></script>
+    <script src="docs/assets/js/bootstrap-alert.js"></script>
+    <script src="docs/assets/js/bootstrap-modal.js"></script>
+    <script src="docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="docs/assets/js/bootstrap-tab.js"></script>
+    <script src="docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="docs/assets/js/bootstrap-popover.js"></script>
+    <script src="docs/assets/js/bootstrap-button.js"></script>
+    <script src="docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="docs/assets/js/bootstrap-typeahead.js"></script>
+    <script src="docs/assets/js/jquery.validate.js"></script>
+    <%--<script src="docs/assets/js/jquery.metadata.js"></script>--%>
+
+    <%--this code is for date picker--%>
+      <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <%--code end--%>
+
+  
+</body>
+</html>

@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="akysb_data_base" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=NAZIM-PC;Initial Catalog=akysb_data_base;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="akysb_data_baseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="AID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountNo" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OpeningBalance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrganizationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Account_JDetail" Member="JDetails" ThisKey="AID" OtherKey="VoucherNo" Type="JDetail" />
+      <Association Name="AccountType_Account" Member="AccountType" ThisKey="AccountTypeID" OtherKey="AccountTypeID" Type="AccountType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountType" Member="AccountTypes">
+    <Type Name="AccountType">
+      <Column Name="AccountTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountType" Member="AccountType1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Detail" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="AccountType_Account" Member="Accounts" ThisKey="AccountTypeID" OtherKey="AccountTypeID" Type="Account" />
+    </Type>
+  </Table>
+  <Table Name="dbo.e_catagory" Member="e_catagories">
+    <Type Name="e_catagory">
+      <Column Name="e_cataid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="e_cat_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="e_catagory_event_register" Member="event_registers" ThisKey="e_cataid" OtherKey="e_cataid" Type="event_register" />
+    </Type>
+  </Table>
+  <Table Name="dbo.e_login" Member="e_logins">
+    <Type Name="e_login">
+      <Column Name="loginid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="logintypeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="emailadd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Isactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(18)" CanBeNull="true" />
+      <Column Name="l_address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="l_dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="e_login_event_register" Member="event_registers" ThisKey="loginid" OtherKey="e_loginid" Type="event_register" />
+      <Association Name="e_logintype_e_login" Member="e_logintype" ThisKey="logintypeid" OtherKey="logintypeid" Type="e_logintype" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.e_logintype" Member="e_logintypes">
+    <Type Name="e_logintype">
+      <Column Name="logintypeid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typename" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="e_logintype_e_login" Member="e_logins" ThisKey="logintypeid" OtherKey="logintypeid" Type="e_login" />
+      <Association Name="e_logintype_pagesacess" Member="pagesacesses" ThisKey="logintypeid" OtherKey="logintypeid" Type="pagesacess" />
+    </Type>
+  </Table>
+  <Table Name="dbo.event_register" Member="event_registers">
+    <Type Name="event_register">
+      <Column Name="eventid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="e_orgid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="e_loginid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="e_currentdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="e_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="e_eventdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="e_orgpersonname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="e_amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="e_description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="e_location" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="e_isaprove" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="e_cataid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventParticipationFee" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="e_service" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="event_register_part_event_register" Member="part_event_registers" ThisKey="eventid" OtherKey="eventid" Type="part_event_register" />
+      <Association Name="event_register_e_sport_equip" Member="e_sport_equips" ThisKey="eventid" OtherKey="eventid" Type="e_sport_equip" />
+      <Association Name="e_catagory_event_register" Member="e_catagory" ThisKey="e_cataid" OtherKey="e_cataid" Type="e_catagory" IsForeignKey="true" />
+      <Association Name="e_login_event_register" Member="e_login" ThisKey="e_loginid" OtherKey="loginid" Type="e_login" IsForeignKey="true" />
+      <Association Name="organization_event_register" Member="organization" ThisKey="e_orgid" OtherKey="orgid" Type="organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JDetail" Member="JDetails">
+    <Type Name="JDetail">
+      <Column Name="JDetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VoucherNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNo" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="JEntryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Memo" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Dr" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Cr" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Account_JDetail" Member="Account" ThisKey="VoucherNo" OtherKey="AID" Type="Account" IsForeignKey="true" />
+      <Association Name="JEntry_JDetail" Member="JEntry" ThisKey="JEntryID" OtherKey="JEntryID" Type="JEntry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JEntry" Member="JEntries">
+    <Type Name="JEntry">
+      <Column Name="JEntryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="JEntry_JDetail" Member="JDetails" ThisKey="JEntryID" OtherKey="JEntryID" Type="JDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.m_notification" Member="m_notifications">
+    <Type Name="m_notification">
+      <Column Name="notifiID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="loginid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.meeting_schedule" Member="meeting_schedules">
+    <Type Name="meeting_schedule">
+      <Column Name="Meetingid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="m_subject" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="m_datetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="location" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.org_Address" Member="org_Addresses">
+    <Type Name="org_Address">
+      <Column Name="ADDID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="orgid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="organization_org_Address" Member="organization" ThisKey="orgid" OtherKey="orgid" Type="organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.organization" Member="organizations">
+    <Type Name="organization">
+      <Column Name="orgid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="org_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="organization_event_register" Member="event_registers" ThisKey="orgid" OtherKey="e_orgid" Type="event_register" />
+      <Association Name="organization_org_Address" Member="org_Addresses" ThisKey="orgid" OtherKey="orgid" Type="org_Address" />
+      <Association Name="organization_org_contact" Member="org_contacts" ThisKey="orgid" OtherKey="orgid" Type="org_contact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pages" Member="pages">
+    <Type Name="page">
+      <Column Name="pageid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pagename" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="page_pagesacess" Member="pagesacesses" ThisKey="pageid" OtherKey="pageid" Type="pagesacess" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pagesacess" Member="pagesacesses">
+    <Type Name="pagesacess">
+      <Column Name="p_acessid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pageid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="logintypeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="e_logintype_pagesacess" Member="e_logintype" ThisKey="logintypeid" OtherKey="logintypeid" Type="e_logintype" IsForeignKey="true" />
+      <Association Name="page_pagesacess" Member="page" ThisKey="pageid" OtherKey="pageid" Type="page" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.part_event_register" Member="part_event_registers">
+    <Type Name="part_event_register">
+      <Column Name="prid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="eventid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="partid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fee" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="currentdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="event_register_part_event_register" Member="event_register" ThisKey="eventid" OtherKey="eventid" Type="event_register" IsForeignKey="true" />
+      <Association Name="participant_part_event_register" Member="participant" ThisKey="partid" OtherKey="partid" Type="participant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.participant" Member="participants">
+    <Type Name="participant">
+      <Column Name="partid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="p_first_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_middle_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="p_last_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_gender" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="p_address" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="p_jamat_khana" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="p_ptcl" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="participant_part_event_register" Member="part_event_registers" ThisKey="partid" OtherKey="partid" Type="part_event_register" />
+      <Association Name="participant_part_contact" Member="part_contacts" ThisKey="partid" OtherKey="partid" Type="part_contact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sport_equip" Member="sport_equips">
+    <Type Name="sport_equip">
+      <Column Name="sporteqid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="eq_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="t_quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="a_quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="sport_equip_e_sport_equip" Member="e_sport_equips" ThisKey="sporteqid" OtherKey="sporteqid" Type="e_sport_equip" />
+    </Type>
+  </Table>
+  <Table Name="dbo.e_sport_equip" Member="e_sport_equips">
+    <Type Name="e_sport_equip">
+      <Column Name="eventeqid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sporteqid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="eventid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sp_return" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Association Name="event_register_e_sport_equip" Member="event_register" ThisKey="eventid" OtherKey="eventid" Type="event_register" IsForeignKey="true" />
+      <Association Name="sport_equip_e_sport_equip" Member="sport_equip" ThisKey="sporteqid" OtherKey="sporteqid" Type="sport_equip" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.part_contact" Member="part_contacts">
+    <Type Name="part_contact">
+      <Column Name="part_contid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="partid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="contactno" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="participant_part_contact" Member="participant" ThisKey="partid" OtherKey="partid" Type="participant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.org_contact" Member="org_contacts">
+    <Type Name="org_contact">
+      <Column Name="contectid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="orgid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="contactno" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="pername" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="organization_org_contact" Member="organization" ThisKey="orgid" OtherKey="orgid" Type="organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spGetCategoryFromID" Method="spGetCategoryFromID">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetCategoryFromIDResult">
+      <Column Name="e_cataid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="e_cat_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetEventRegisterFromIDs" Method="spGetEventRegisterFromIDs">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetEventRegisterFromIDsResult">
+      <Column Name="eventid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="e_orgid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="e_loginid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="e_currentdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="e_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="e_eventdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="e_orgpersonname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="e_amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="e_description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="e_location" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="e_isaprove" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="e_cataid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventParticipationFee" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="e_service" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetJournalEntryDetail" Method="spGetJournalEntryDetail">
+    <ElementType Name="spGetJournalEntryDetailResult">
+      <Column Name="JDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VoucherNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNo" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="JEntryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Memo" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Dr" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Cr" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetlogincheckFromID" Method="spGetlogincheckFromID">
+    <Parameter Name="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="password" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spGetlogincheckFromIDResult">
+      <Column Name="loginid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="logintypeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="emailadd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Isactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(18)" CanBeNull="true" />
+      <Column Name="l_address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="l_dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetloginFromID" Method="spGetloginFromID">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetloginFromIDResult">
+      <Column Name="loginid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="logintypeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="emailadd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Isactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(18)" CanBeNull="true" />
+      <Column Name="l_address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="l_dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetlogintypeFromID" Method="spGetlogintypeFromID">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetlogintypeFromIDResult">
+      <Column Name="logintypeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="typename" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetOrganizationFromIDs" Method="spGetOrganizationFromIDs">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetOrganizationFromIDsResult">
+      <Column Name="orgid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="org_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetorgcontactFromID" Method="spGetorgcontactFromID">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetorgcontactFromIDResult">
+      <Column Name="contactno" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="contectid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="orgid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetpassacessFromID" Method="spGetpassacessFromID">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetpassacessFromIDResult">
+      <Column Name="logintypeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p_acessid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pageid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetpagesFromID" Method="spGetpagesFromID">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetpagesFromIDResult">
+      <Column Name="pageid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pagename" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetPerticipentFromIDs" Method="spGetPerticipentFromIDs">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetPerticipentFromIDsResult">
+      <Column Name="partid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p_first_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_address" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="p_dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="p_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_gender" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_last_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="p_middle_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetSporteqFromID" Method="spGetSporteqFromID">
+    <Parameter Name="CID" Parameter="cID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetSporteqFromIDResult">
+      <Column Name="sporteqid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="eq_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="t_quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
